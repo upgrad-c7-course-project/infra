@@ -1,11 +1,10 @@
-# TODO: break up the file and use vars
 
 terraform {
-  # backend "s3" {
-  #   bucket = "101-terraform-backend"
-  #   key    = "ts-state-file"
-  #   region = "us-east-1"
-  # }
+  backend "s3" {
+    bucket = "101-terraform-backend"
+    key    = "ts-state-file"
+    region = "us-east-1"
+  }
 
   required_providers {
     aws = {
@@ -17,10 +16,9 @@ terraform {
 
 
 # NOTE: Have not created DynamoDB lock due to permissions missing for the same on Nuverpro account
-
-
 provider "aws" {
   region = "us-east-1"
+  profile = "personal"
 }
 
 
