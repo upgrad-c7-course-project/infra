@@ -16,7 +16,7 @@ variable "aws-region-az-b" {
 }
 
 variable "pem-keyname" {
-  default = "upgrad"
+  default = "upgrad-personal-account"
 }
 
 # CIDRs/Ips

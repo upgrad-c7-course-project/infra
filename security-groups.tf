@@ -31,17 +31,17 @@ resource "aws_security_group" "private_instance_sg" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = [var.vpc-cidr-block]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = [var.vpc-cidr-block]
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = [var.cidr-all]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = [var.cidr-all]
   }
 
   tags = {
@@ -59,17 +59,17 @@ resource "aws_security_group" "public_web_sg" {
   # 
 
   ingress {
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = [var.cidr-all]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = [var.cidr-all]
   }
 
   tags = {
