@@ -58,6 +58,8 @@
 #   description = "Allow incoming to port 80 from self IP and all egress"
 #   vpc_id      = aws_vpc.main.id
 
+  # cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+
 #   ingress {
 #     from_port        = 80
 #     to_port          = 80

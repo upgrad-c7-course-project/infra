@@ -17,15 +17,15 @@ terraform {
 
 # NOTE: Have not created DynamoDB lock due to permissions missing for the same on Nuverpro account
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws-region
   profile = "personal"
 }
 
 
 resource "aws_s3_bucket" "terraform-backend" {
-  bucket = "101-terraform-backend"
+  bucket = var.terraform-backend-bucket
 
   tags = {
-    Name        = "101-terraform-backend"
+    Name        = var.terraform-backend-bucket
   }
 }
