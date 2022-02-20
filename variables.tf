@@ -15,6 +15,9 @@ variable "aws-region-az-b" {
   default = "us-east-1b"
 }
 
+variable "pem-keyname" {
+  default = "upgrad"
+}
 
 # CIDRs/Ips
 variable "vpc-cidr-block" {
