@@ -1,0 +1,12 @@
+---
+-
+  name: first play
+  hosts: all
+  tasks:
+    - name: "Execute command 'date'"
+      command: date
+    - name: "Execute echo command"
+      command: "echo hello"
+    - name: "Ping"
+      ping:
+        
