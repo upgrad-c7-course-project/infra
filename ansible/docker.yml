@@ -1,0 +1,43 @@
+---
+- name: Install docker
+  hosts: docker_servers
+  tasks:
+    - name: Update apt cache
+      become: true
+      apt:
+        update_cache: yes
+
+    - name: Install a list of prerequisite packages
+      become: true
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+
+    - name: add GPG key
+      become: true
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: add docker repository to apt
+      become: true
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      become: true
+      apt: 
+        update_cache: yes
+        name: docker-ce
+        state:  latest
+
+
+    - name: Make sure docker is started and running
+      service:
+        name: docker
+        state: started
+        enabled: yes

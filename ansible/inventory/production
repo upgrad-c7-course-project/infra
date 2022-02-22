@@ -14,5 +14,3 @@ jenkin_servers
 
 [docker_servers:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ProxyCommand="ssh -W %h:%p ubuntu@ec2-34-207-201-36.compute-1.amazonaws.com"'
-
-
