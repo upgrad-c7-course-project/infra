@@ -1,5 +1,12 @@
 # ALB 
 
+resource "aws_s3_bucket" "alb-logs-bucket" {
+  bucket = "101-alb-logs"
+
+  tags = {
+    Name = "101-alb-logs"
+  }
+}
 
 resource "aws_lb" "alb" {
   internal           = false
@@ -7,11 +14,10 @@ resource "aws_lb" "alb" {
   security_groups    = [aws_security_group.public_web_sg.id]
   subnets            = [aws_subnet.public-subnet1.id, aws_subnet.public-subnet2.id]
 
-  # access_logs {
-  #   bucket  = aws_s3_bucket.alb_logs.bucket
-  #   prefix  = "alb"
-  #   enabled = true
-  # }
+  access_logs {
+    bucket  = aws_s3_bucket.alb-logs-bucket.bucket
+    enabled = true
+  }
 
   tags = {
     Name  = "101-alb"
