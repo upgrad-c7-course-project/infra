@@ -1,5 +1,5 @@
-resource "aws_ecr_repository" "foo" {
-  name                 = "101-ecr-repo"
+resource "aws_ecr_repository" "docker-images" {
+  name                 = "101-docker-images"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -7,6 +7,8 @@ resource "aws_ecr_repository" "foo" {
   }
 
   tags = {
-    Name = "101-ecr-repo"
+    Name = "101-docker-images"
   }
 }
+
+

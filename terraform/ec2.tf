@@ -19,6 +19,7 @@ resource "aws_instance" "jenkins" {
   subnet_id              = aws_subnet.private-subnet1.id
   vpc_security_group_ids = [aws_security_group.private_instance_sg.id]
   key_name               = var.pem-keyname
+  iam_instance_profile   = aws_iam_instance_profile.ec2-ecr-iam-profile.name
 
 
   tags = {
@@ -33,6 +34,7 @@ resource "aws_instance" "app" {
   subnet_id              = aws_subnet.private-subnet1.id
   vpc_security_group_ids = [aws_security_group.private_instance_sg.id]
   key_name               = var.pem-keyname
+  iam_instance_profile   = aws_iam_instance_profile.ec2-ecr-iam-profile.name
 
 
   tags = {

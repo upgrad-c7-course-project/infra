@@ -20,7 +20,7 @@ resource "aws_lb" "alb" {
   }
 
   tags = {
-    Name  = "101-alb"
+    Name = "101-alb"
   }
 
 }
@@ -32,12 +32,12 @@ resource "aws_lb_listener" "alb-listener" {
   protocol          = "HTTP"
 
   default_action {
-    type            = "fixed-response"
+    type = "fixed-response"
 
     fixed_response {
-      status_code   = "404"
-      content_type  = "text/plain"
-      message_body  = "Not Found"
+      status_code  = "404"
+      content_type = "text/plain"
+      message_body = "Not Found"
     }
   }
 }
@@ -78,9 +78,9 @@ resource "aws_lb_listener_rule" "alb-listener-app" {
 
 # App targets
 resource "aws_lb_target_group" "app-targets" {
-  port = 80
-  protocol = "HTTP"
-  vpc_id = aws_vpc.main.id
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = aws_vpc.main.id
   target_type = "instance"
 
   tags = {
@@ -98,9 +98,9 @@ resource "aws_lb_target_group_attachment" "app-targets-attach" {
 
 # Jenkins targets
 resource "aws_lb_target_group" "jenkins-targets" {
-  port = 80
-  protocol = "HTTP"
-  vpc_id = aws_vpc.main.id
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = aws_vpc.main.id
   target_type = "instance"
 
   tags = {
