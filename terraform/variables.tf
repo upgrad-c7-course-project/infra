@@ -1,7 +1,3 @@
-variable "terraform-backend-bucket" {
-  default = "101-terraform-backend"
-}
-
 variable "aws-region" {
   default = "us-east-1"
 }
